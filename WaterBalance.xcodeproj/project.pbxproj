@@ -14,6 +14,7 @@
 		3321E76729EB0F61002AE918 /* WaterBalance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3321E76529EB0F61002AE918 /* WaterBalance.xcdatamodeld */; };
 		3321E76929EB0F63002AE918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76829EB0F63002AE918 /* Assets.xcassets */; };
 		3321E76C29EB0F63002AE918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76A29EB0F63002AE918 /* LaunchScreen.storyboard */; };
+		33D8FF2929EEB09400D4DCD3 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D8FF2829EEB09400D4DCD3 /* WaveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3321E76829EB0F63002AE918 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3321E76B29EB0F63002AE918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3321E76D29EB0F63002AE918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33D8FF2829EEB09400D4DCD3 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				3321E76829EB0F63002AE918 /* Assets.xcassets */,
 				3321E76A29EB0F63002AE918 /* LaunchScreen.storyboard */,
 				3321E76D29EB0F63002AE918 /* Info.plist */,
+				33D8FF2829EEB09400D4DCD3 /* WaveView.swift */,
 				3321E76529EB0F61002AE918 /* WaterBalance.xcdatamodeld */,
 			);
 			path = WaterBalance;
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3321E76129EB0F61002AE918 /* ViewController.swift in Sources */,
+				33D8FF2929EEB09400D4DCD3 /* WaveView.swift in Sources */,
 				3321E75D29EB0F61002AE918 /* AppDelegate.swift in Sources */,
 				3321E76729EB0F61002AE918 /* WaterBalance.xcdatamodeld in Sources */,
 				3321E75F29EB0F61002AE918 /* SceneDelegate.swift in Sources */,
@@ -299,6 +303,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,6 +332,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

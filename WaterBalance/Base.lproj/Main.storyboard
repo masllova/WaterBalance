@@ -1,24 +1,276 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4Cs-yY-Que">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tap Bar Controller-->
+        <scene sceneID="AA3-id-Ekn">
+            <objects>
+                <tabBarController modalPresentationStyle="currentContext" keyboardType="off" id="4Cs-yY-Que" customClass="TapBarController" customModule="WaterBalance" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" tag="1" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="eyL-vH-mtr">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="darkBlueColor"/>
+                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
+                        <color key="tintColor" name="waveColor"/>
+                        <color key="selectedImageTintColor" name="waveColor"/>
+                        <tabBarAppearance key="standardAppearance"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="SkA-4g-f3o"/>
+                        <segue destination="Gwf-Ii-Slf" kind="relationship" relationship="viewControllers" id="gpG-nQ-RSJ"/>
+                        <segue destination="OYo-6L-IOC" kind="relationship" relationship="viewControllers" id="W7F-8m-vHH"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WjY-6c-J8k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1742" y="-1280"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="MML-mo-gFh">
+            <objects>
+                <viewController id="OYo-6L-IOC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3xY-li-HRv"/>
+                        <viewControllerLayoutGuide type="bottom" id="A22-ps-CZY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dVs-mv-Eg1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="KVs-3t-N9H">
+                        <imageReference key="image" image="bell.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BEb-jQ-B86" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-834" y="-774"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WaterBalance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Snv-Kq-Dt9"/>
+                        <viewControllerLayoutGuide type="bottom" id="AkA-Wd-vfB"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozx-hY-G54" userLabel="BackGrView">
+                                <rect key="frame" x="36.666666666666657" y="159.33333333333331" width="320" height="533.33333333333348"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjc-2n-CwQ" customClass="WaveView" customModule="WaterBalance" customModuleProvider="target">
+                                        <rect key="frame" x="25" y="41.666666666666629" width="270" height="450"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="450" id="CAr-aj-NxW"/>
+                                            <constraint firstAttribute="width" secondItem="zjc-2n-CwQ" secondAttribute="height" multiplier="3:5" id="uua-UL-CoQ"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dl" translatesAutoresizingMaskIntoConstraints="NO" id="d9Q-Da-cxh">
+                                        <rect key="frame" x="-15" y="-25" width="350" height="583.33333333333337"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="ZHt-dm-xSi"/>
+                                            <constraint firstAttribute="width" secondItem="d9Q-Da-cxh" secondAttribute="height" multiplier="3:5" id="vQT-Jp-fow"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tu-xp-OD5">
+                                        <rect key="frame" x="146.66666666666669" y="285.33333333333337" width="26.666666666666657" height="48"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                        <color key="textColor" name="darkBlueColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xc1-Lb-CCs">
+                                        <rect key="frame" x="40.333333333333329" y="485" width="239.33333333333337" height="40"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Add water" cornerStyle="capsule">
+                                            <backgroundConfiguration key="background" strokeWidth="0.0">
+                                                <color key="backgroundColor" name="darkBlueColor"/>
+                                                <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
+                                            <directionalEdgeInsets key="contentInsets" top="5" leading="60" bottom="5" trailing="60"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="showAddWaterMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LVW-gS-woo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ozx-hY-G54" secondAttribute="height" multiplier="3:5" id="Bjf-zU-ed7"/>
+                                    <constraint firstAttribute="bottom" secondItem="2Tu-xp-OD5" secondAttribute="bottom" constant="200" id="IMI-dp-DY3"/>
+                                    <constraint firstAttribute="width" constant="320" id="PJa-ar-q6w"/>
+                                    <constraint firstItem="xc1-Lb-CCs" firstAttribute="top" secondItem="ozx-hY-G54" secondAttribute="bottom" constant="-48.333333333333485" id="T67-f3-OZJ"/>
+                                    <constraint firstItem="d9Q-Da-cxh" firstAttribute="centerY" secondItem="zjc-2n-CwQ" secondAttribute="centerY" id="cgn-pL-uAw"/>
+                                    <constraint firstItem="d9Q-Da-cxh" firstAttribute="centerX" secondItem="zjc-2n-CwQ" secondAttribute="centerX" id="dSu-3l-fpJ"/>
+                                    <constraint firstItem="2Tu-xp-OD5" firstAttribute="centerX" secondItem="ozx-hY-G54" secondAttribute="centerX" id="lY9-hl-ON8"/>
+                                    <constraint firstItem="zjc-2n-CwQ" firstAttribute="centerX" secondItem="ozx-hY-G54" secondAttribute="centerX" id="pY9-YI-dal"/>
+                                    <constraint firstItem="zjc-2n-CwQ" firstAttribute="centerY" secondItem="ozx-hY-G54" secondAttribute="centerY" id="qcC-qc-y8O"/>
+                                    <constraint firstItem="xc1-Lb-CCs" firstAttribute="centerX" secondItem="ozx-hY-G54" secondAttribute="centerX" id="y0F-ss-UfF"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Water balance" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5Q-gj-FcG">
+                                <rect key="frame" x="63.666666666666657" y="60" width="265.66666666666674" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <color key="textColor" name="darkBlueColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.64997748770260944" green="0.68534797176720841" blue="0.72472360769113919" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="ozx-hY-G54" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0ZJ-ef-bJJ"/>
+                            <constraint firstItem="ozx-hY-G54" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aya-B9-9fE"/>
+                            <constraint firstItem="X5Q-gj-FcG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bTT-0e-HMw"/>
+                            <constraint firstItem="X5Q-gj-FcG" firstAttribute="top" secondItem="Snv-Kq-Dt9" secondAttribute="bottom" constant="1" id="vL5-g3-1t3"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" id="ILy-Uv-bIi">
+                        <imageReference key="image" image="drop.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="DropLet" destination="d9Q-Da-cxh" id="NUh-8D-PyG"/>
+                        <outlet property="WaterDisplay" destination="2Tu-xp-OD5" id="Ln0-Mr-3GS"/>
+                        <outlet property="Wave" destination="zjc-2n-CwQ" id="Pyk-F3-RPY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="309" y="-1280"/>
+        </scene>
+        <!--Menu Controller-->
+        <scene sceneID="BrR-mk-zTO">
+            <objects>
+                <viewController storyboardIdentifier="menu" id="Xb3-5n-hDT" customClass="MenuController" customModule="WaterBalance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rPB-zE-o9O"/>
+                        <viewControllerLayoutGuide type="bottom" id="ate-Ao-xNL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iPD-Mk-0K5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIi-VS-bpN">
+                                <rect key="frame" x="46" y="499" width="301" height="178"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbk-Z1-tqI">
+                                        <rect key="frame" x="-3.3333333333333357" y="21" width="98" height="44"/>
+                                        <color key="tintColor" name="darkBlueColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="100ml">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="add100ml:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="c93-LM-nzR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMT-50-yoS">
+                                        <rect key="frame" x="191" y="21" width="101.66666666666669" height="44"/>
+                                        <color key="tintColor" name="darkBlueColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="500ml">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="add500ml:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="FFm-qJ-JFB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqp-f1-0Gp">
+                                        <rect key="frame" x="94.666666666666657" y="21" width="100.33333333333334" height="44"/>
+                                        <color key="tintColor" name="darkBlueColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="250ml">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="add250ml:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="avN-p4-OgJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQx-rc-cHO">
+                                        <rect key="frame" x="120" y="123" width="61" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="back"/>
+                                        <connections>
+                                            <action selector="back:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="vHM-kg-yWD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="waveColor"/>
+                                <constraints>
+                                    <constraint firstItem="bMT-50-yoS" firstAttribute="baseline" secondItem="rbk-Z1-tqI" secondAttribute="baseline" id="6FB-9R-uqc"/>
+                                    <constraint firstItem="bMT-50-yoS" firstAttribute="baseline" secondItem="Hqp-f1-0Gp" secondAttribute="baseline" id="906-1D-8B4"/>
+                                    <constraint firstItem="rbk-Z1-tqI" firstAttribute="centerY" secondItem="SIi-VS-bpN" secondAttribute="centerY" constant="-46" id="BPo-DG-fip"/>
+                                    <constraint firstItem="uQx-rc-cHO" firstAttribute="centerX" secondItem="SIi-VS-bpN" secondAttribute="centerX" id="SUi-9d-I8A"/>
+                                    <constraint firstAttribute="bottom" secondItem="uQx-rc-cHO" secondAttribute="bottom" constant="20" id="TlX-VS-KHz"/>
+                                    <constraint firstItem="bMT-50-yoS" firstAttribute="trailing" secondItem="SIi-VS-bpN" secondAttribute="trailingMargin" constant="-0.33333333333337123" id="arT-44-NkA"/>
+                                    <constraint firstItem="rbk-Z1-tqI" firstAttribute="centerX" secondItem="SIi-VS-bpN" secondAttribute="centerX" constant="-105" id="oGj-p9-3ct"/>
+                                    <constraint firstItem="Hqp-f1-0Gp" firstAttribute="leading" secondItem="rbk-Z1-tqI" secondAttribute="trailing" id="prt-KO-cEz"/>
+                                    <constraint firstItem="bMT-50-yoS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hqp-f1-0Gp" secondAttribute="trailing" constant="-10" id="vnP-bF-NKv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SIi-VS-bpN" firstAttribute="leading" secondItem="iPD-Mk-0K5" secondAttribute="leadingMargin" constant="30" id="GgN-Rj-Ma1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SIi-VS-bpN" secondAttribute="trailing" constant="30" id="I8g-U8-i13"/>
+                            <constraint firstItem="ate-Ao-xNL" firstAttribute="top" secondItem="SIi-VS-bpN" secondAttribute="bottom" constant="141" id="PPK-YB-syb"/>
+                            <constraint firstItem="SIi-VS-bpN" firstAttribute="top" secondItem="rPB-zE-o9O" secondAttribute="bottom" constant="440" id="UND-eI-VYA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="menuView" destination="SIi-VS-bpN" id="gwx-IN-Zle"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FFS-wk-jm0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096.9465648854962" y="-1280.2816901408451"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="f6r-In-dIL">
+            <objects>
+                <viewController id="Gwf-Ii-Slf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cXB-7H-rlA"/>
+                        <viewControllerLayoutGuide type="bottom" id="LFw-fB-8L7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hnF-f6-8p7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="list.bullet.clipboard.fill" catalog="system" id="d8T-L6-Ibq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ryj-8H-KQW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-833" y="-1789"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="darkBlueColor"/>
+    <resources>
+        <image name="bell.fill" catalog="system" width="123" height="128"/>
+        <image name="dl" width="828" height="1336"/>
+        <image name="drop.fill" catalog="system" width="96" height="128"/>
+        <image name="list.bullet.clipboard.fill" catalog="system" width="103" height="128"/>
+        <namedColor name="darkBlueColor">
+            <color red="0.043000001460313797" green="0.15700000524520874" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="waveColor">
+            <color red="0.75700002908706665" green="0.89800000190734863" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
