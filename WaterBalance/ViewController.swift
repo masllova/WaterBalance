@@ -87,44 +87,5 @@ class ViewController: UIViewController, MenuControllerDelegate {
          */
     }
     
-protocol MenuControllerDelegate: AnyObject {
-    func changeInf(_ number1: Double, number2: Int)
-    
-}
 
-class MenuController: UIViewController {
-    weak var delegate: MenuControllerDelegate?
-    
-    
-    @IBOutlet weak var menuView: UIView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        menuView.layer.cornerRadius = 20
-      //  view.layer.masksToBounds = true
-    }
 
-    
-    //The minimum step of adding water is 50 ml, which is equal to reducing the growth variable by 40. The filled drop is the value of the variable is 50, and the empty drop is 850
-    
-    @IBAction func add100ml(_ sender: Any) {
-        delegate?.changeInf(5.0, number2: 40)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func add250ml(_ sender: Any) {
-        delegate?.changeInf(12.5, number2: 100)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func add500ml(_ sender: Any) {
-        delegate?.changeInf(25.0, number2: 200)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func back(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-}

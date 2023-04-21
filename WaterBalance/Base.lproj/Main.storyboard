@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tap Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="AA3-id-Ekn">
             <objects>
-                <tabBarController modalPresentationStyle="currentContext" keyboardType="off" id="4Cs-yY-Que" customClass="TapBarController" customModule="WaterBalance" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" tag="1" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="eyL-vH-mtr">
+                <tabBarController modalPresentationStyle="currentContext" keyboardType="off" id="4Cs-yY-Que" sceneMemberID="viewController">
+                    <tabBar key="tabBar" tag="1" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eyL-vH-mtr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="darkBlueColor"/>
@@ -24,14 +24,14 @@
                         <tabBarAppearance key="standardAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="SkA-4g-f3o"/>
-                        <segue destination="Gwf-Ii-Slf" kind="relationship" relationship="viewControllers" id="gpG-nQ-RSJ"/>
-                        <segue destination="OYo-6L-IOC" kind="relationship" relationship="viewControllers" id="W7F-8m-vHH"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="jfm-zI-zEy"/>
+                        <segue destination="Gwf-Ii-Slf" kind="relationship" relationship="viewControllers" id="MWV-ia-YhH"/>
+                        <segue destination="OYo-6L-IOC" kind="relationship" relationship="viewControllers" id="nKF-W2-57C"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WjY-6c-J8k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1742" y="-1280"/>
+            <point key="canvasLocation" x="-1732" y="-1158"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="MML-mo-gFh">
@@ -165,59 +165,60 @@
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIi-VS-bpN">
                                 <rect key="frame" x="46" y="499" width="301" height="178"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbk-Z1-tqI">
-                                        <rect key="frame" x="-3.3333333333333357" y="21" width="98" height="44"/>
-                                        <color key="tintColor" name="darkBlueColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="100ml">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="add100ml:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="c93-LM-nzR"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMT-50-yoS">
-                                        <rect key="frame" x="191" y="21" width="101.66666666666669" height="44"/>
-                                        <color key="tintColor" name="darkBlueColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="500ml">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="add500ml:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="FFm-qJ-JFB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqp-f1-0Gp">
-                                        <rect key="frame" x="94.666666666666657" y="21" width="100.33333333333334" height="44"/>
-                                        <color key="tintColor" name="darkBlueColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="250ml">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="add250ml:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="avN-p4-OgJ"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQx-rc-cHO">
-                                        <rect key="frame" x="120" y="123" width="61" height="35"/>
+                                        <rect key="frame" x="120" y="133" width="61" height="35"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="back"/>
                                         <connections>
                                             <action selector="back:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="vHM-kg-yWD"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Nee-nS-nkM">
+                                        <rect key="frame" x="12.666666666666657" y="20" width="276" height="41"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="276" id="4wT-Gz-B31"/>
+                                            <constraint firstAttribute="width" secondItem="Nee-nS-nkM" secondAttribute="height" multiplier="276:40" id="nbg-Kf-9mP"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="100ml"/>
+                                            <segment title="250ml"/>
+                                            <segment title="500ml" width="97"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="selectedSegmentTintColor" name="darkBlueColor"/>
+                                        <connections>
+                                            <action selector="selectedWaterVolume:" destination="Xb3-5n-hDT" eventType="valueChanged" id="dnV-Ub-Zq1"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E70-wz-Hmm">
+                                        <rect key="frame" x="67.333333333333329" y="80" width="166.33333333333337" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="drink water">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <buttonConfiguration key="configuration" style="filled" title="Add water" cornerStyle="capsule">
+                                            <backgroundConfiguration key="background"/>
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                            <directionalEdgeInsets key="contentInsets" top="5" leading="35" bottom="5" trailing="35"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" name="darkBlueColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addWater:" destination="Xb3-5n-hDT" eventType="touchUpInside" id="A5s-sl-nHO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="waveColor"/>
                                 <constraints>
-                                    <constraint firstItem="bMT-50-yoS" firstAttribute="baseline" secondItem="rbk-Z1-tqI" secondAttribute="baseline" id="6FB-9R-uqc"/>
-                                    <constraint firstItem="bMT-50-yoS" firstAttribute="baseline" secondItem="Hqp-f1-0Gp" secondAttribute="baseline" id="906-1D-8B4"/>
-                                    <constraint firstItem="rbk-Z1-tqI" firstAttribute="centerY" secondItem="SIi-VS-bpN" secondAttribute="centerY" constant="-46" id="BPo-DG-fip"/>
+                                    <constraint firstItem="E70-wz-Hmm" firstAttribute="top" secondItem="Nee-nS-nkM" secondAttribute="bottom" constant="20" id="8MG-XA-SBV"/>
+                                    <constraint firstItem="Nee-nS-nkM" firstAttribute="centerX" secondItem="SIi-VS-bpN" secondAttribute="centerX" id="CMe-kz-pzS"/>
                                     <constraint firstItem="uQx-rc-cHO" firstAttribute="centerX" secondItem="SIi-VS-bpN" secondAttribute="centerX" id="SUi-9d-I8A"/>
-                                    <constraint firstAttribute="bottom" secondItem="uQx-rc-cHO" secondAttribute="bottom" constant="20" id="TlX-VS-KHz"/>
-                                    <constraint firstItem="bMT-50-yoS" firstAttribute="trailing" secondItem="SIi-VS-bpN" secondAttribute="trailingMargin" constant="-0.33333333333337123" id="arT-44-NkA"/>
-                                    <constraint firstItem="rbk-Z1-tqI" firstAttribute="centerX" secondItem="SIi-VS-bpN" secondAttribute="centerX" constant="-105" id="oGj-p9-3ct"/>
-                                    <constraint firstItem="Hqp-f1-0Gp" firstAttribute="leading" secondItem="rbk-Z1-tqI" secondAttribute="trailing" id="prt-KO-cEz"/>
-                                    <constraint firstItem="bMT-50-yoS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hqp-f1-0Gp" secondAttribute="trailing" constant="-10" id="vnP-bF-NKv"/>
+                                    <constraint firstAttribute="bottom" secondItem="uQx-rc-cHO" secondAttribute="bottom" constant="10" id="TlX-VS-KHz"/>
+                                    <constraint firstItem="Nee-nS-nkM" firstAttribute="top" secondItem="SIi-VS-bpN" secondAttribute="top" constant="20" id="igm-Ke-3Nf"/>
+                                    <constraint firstItem="E70-wz-Hmm" firstAttribute="centerX" secondItem="SIi-VS-bpN" secondAttribute="centerX" id="qXM-hQ-IBU"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -231,6 +232,7 @@
                     </view>
                     <connections>
                         <outlet property="menuView" destination="SIi-VS-bpN" id="gwx-IN-Zle"/>
+                        <outlet property="segmentedcontrol" destination="Nee-nS-nkM" id="SKu-zS-zKd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFS-wk-jm0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

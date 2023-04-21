@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3320405629F2A9B9005F4DB5 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3320405529F2A9B9005F4DB5 /* MenuController.swift */; };
 		3321E75D29EB0F61002AE918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321E75C29EB0F61002AE918 /* AppDelegate.swift */; };
 		3321E75F29EB0F61002AE918 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321E75E29EB0F61002AE918 /* SceneDelegate.swift */; };
 		3321E76129EB0F61002AE918 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321E76029EB0F61002AE918 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3320405529F2A9B9005F4DB5 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		3321E75929EB0F61002AE918 /* WaterBalance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterBalance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3321E75C29EB0F61002AE918 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3321E75E29EB0F61002AE918 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				3321E75C29EB0F61002AE918 /* AppDelegate.swift */,
 				3321E75E29EB0F61002AE918 /* SceneDelegate.swift */,
 				3321E76029EB0F61002AE918 /* ViewController.swift */,
+				3320405529F2A9B9005F4DB5 /* MenuController.swift */,
 				3321E76229EB0F61002AE918 /* Main.storyboard */,
 				3321E76829EB0F63002AE918 /* Assets.xcassets */,
 				3321E76A29EB0F63002AE918 /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 				33D8FF2929EEB09400D4DCD3 /* WaveView.swift in Sources */,
 				3321E75D29EB0F61002AE918 /* AppDelegate.swift in Sources */,
 				3321E76729EB0F61002AE918 /* WaterBalance.xcdatamodeld in Sources */,
+				3320405629F2A9B9005F4DB5 /* MenuController.swift in Sources */,
 				3321E75F29EB0F61002AE918 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
