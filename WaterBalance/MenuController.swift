@@ -45,5 +45,5 @@ class MenuController: UIViewController {
 }
 
 protocol MenuControllerDelegate: AnyObject {
-    func changeInf(_ number1: Double, number2: Int)
+    func changeInf(_ number1: Double, number2: Double)
 }

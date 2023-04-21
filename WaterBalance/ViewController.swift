@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CoreData
+
 class ViewController: UIViewController, MenuControllerDelegate {
     var percent: Double = 0
     
@@ -15,6 +17,22 @@ class ViewController: UIViewController, MenuControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
+            request.returnsObjectsAsFaults = false
+            do {
+                let result = try context.fetch(request)
+                for data in result as! [NSManagedObject] {
+                    if let percent = data.value(forKey: "percent") as? Double {
+                        self.percent = percent
+                    }
+                    if let height = data.value(forKey: "height") as? Double {
+                        Wave.height -= height
+                    }
+                }
+            } catch {
+                print("Failed")
+            }
         updateWaterDisplay()
         
         DropLet.layer.cornerRadius = 20
@@ -37,14 +55,36 @@ class ViewController: UIViewController, MenuControllerDelegate {
         present(menu, animated: true, completion: nil)
         
     }
-    func changeInf(_ number1: Double, number2: Int) {
-        self.percent += number1
-        if self.percent >= 100 {self.percent = 100}
+    func changeInf(_ number1: Double, number2: Double) {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Water", in: context)!
+            let water = NSManagedObject(entity: entity, insertInto: context)
+            
+            water.setValue(Date(), forKey: "date")
+            water.setValue(number2, forKey: "height")
+            self.percent += number1
+            
+            if self.percent >= 100 {
+                self.percent = 100
+            }
+            
+            water.setValue(self.percent, forKey: "percent")
+            
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
         Wave.height -= number2
-        if Wave.height <= 50 {Wave.height = 50}
-        
-        updateWaterDisplay()
-    }
+            
+            if Wave.height <= 50 {
+                Wave.height = 50
+            }
+            
+            updateWaterDisplay()
+        }
+    
 }
     
 

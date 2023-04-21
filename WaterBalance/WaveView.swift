@@ -7,7 +7,7 @@
 import UIKit
 
 class WaveView: UIView {
-    var height = 850
+    var height: Double = 850
     
     enum Direction {
         case right
