@@ -14,7 +14,6 @@ class ViewController: UIViewController, MenuControllerDelegate {
             if percent > 100 {percent = 100}
         }
     }
-    
     @IBOutlet weak var Wave: WaveView!
     @IBOutlet weak var DropLet: UIImageView!
     @IBOutlet weak var WaterDisplay: UILabel!
@@ -45,6 +44,14 @@ class ViewController: UIViewController, MenuControllerDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.Wave.animationStart(direction: .right, speed: 10)
         }
+        let calendar = Calendar(identifier: .gregorian)
+            var components = DateComponents()
+            components.calendar = calendar
+            components.hour = 0
+            components.minute = 0
+            let midnight = calendar.nextDate(after: Date(), matching: components, matchingPolicy: .nextTime)!
+            let timer = Timer(fireAt: midnight, interval: 0, target: self, selector: #selector(clearWater), userInfo: nil, repeats: true)
+            RunLoop.main.add(timer, forMode: .common)
     }
     
     func updateWaterDisplay() {
@@ -64,7 +71,6 @@ class ViewController: UIViewController, MenuControllerDelegate {
         let entity = NSEntityDescription.entity(forEntityName: "Water", in: context)!
         let water = NSManagedObject(entity: entity, insertInto: context)
         
-        water.setValue(Date(), forKey: "date")
         water.setValue(number2, forKey: "height")
         
         self.percent += number1
@@ -81,8 +87,23 @@ class ViewController: UIViewController, MenuControllerDelegate {
         
         updateWaterDisplay()
     }
+    @objc func clearWater() {
+         percent = 0
+         Wave.height = 850
+         updateWaterDisplay()
+         
+         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
+         request.returnsObjectsAsFaults = false
+         do {
+             let result = try context.fetch(request)
+             for data in result as! [NSManagedObject] {
+                 context.delete(data)
+             }
+             try context.save()
+         } catch {
+             print("Failed to clear water")
+         }
+     }
     
 }
-
-
-
