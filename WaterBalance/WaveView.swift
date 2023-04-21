@@ -7,7 +7,11 @@
 import UIKit
 
 class WaveView: UIView {
-    var height: Double = 850
+    var height: Double = 850 {
+        didSet {
+            if height < 50 {height = 50}
+        }
+    }
     
     enum Direction {
         case right

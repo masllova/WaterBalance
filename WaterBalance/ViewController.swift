@@ -9,7 +9,11 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController, MenuControllerDelegate {
-    var percent: Double = 0
+    var percent: Double = 0{
+        didSet {
+            if percent > 100 {percent = 100}
+        }
+    }
     
     @IBOutlet weak var Wave: WaveView!
     @IBOutlet weak var DropLet: UIImageView!
@@ -56,36 +60,29 @@ class ViewController: UIViewController, MenuControllerDelegate {
         
     }
     func changeInf(_ number1: Double, number2: Double) {
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let entity = NSEntityDescription.entity(forEntityName: "Water", in: context)!
-            let water = NSManagedObject(entity: entity, insertInto: context)
-            
-            water.setValue(Date(), forKey: "date")
-            water.setValue(number2, forKey: "height")
-            self.percent += number1
-            
-            if self.percent >= 100 {
-                self.percent = 100
-            }
-            
-            water.setValue(self.percent, forKey: "percent")
-            
-            do {
-                try context.save()
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-            
-        Wave.height -= number2
-            
-            if Wave.height <= 50 {
-                Wave.height = 50
-            }
-            
-            updateWaterDisplay()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Water", in: context)!
+        let water = NSManagedObject(entity: entity, insertInto: context)
+        
+        water.setValue(Date(), forKey: "date")
+        water.setValue(number2, forKey: "height")
+        
+        self.percent += number1
+        
+        water.setValue(self.percent, forKey: "percent")
+        
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
+        
+        self.Wave.height -= number2
+        
+        updateWaterDisplay()
+    }
     
 }
-    
+
 
 
