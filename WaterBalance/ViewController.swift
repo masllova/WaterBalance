@@ -10,54 +10,28 @@ import CoreData
 
 class ViewController: UIViewController, MenuControllerDelegate {
     var percent: Double = 0{
-        didSet {
-            if percent > 100 {percent = 100}
-        }
+        didSet {if percent > 100 {percent = 100}}
     }
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     @IBOutlet weak var Wave: WaveView!
     @IBOutlet weak var DropLet: UIImageView!
     @IBOutlet weak var WaterDisplay: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
-            request.returnsObjectsAsFaults = false
-            do {
-                let result = try context.fetch(request)
-                for data in result as! [NSManagedObject] {
-                    if let percent = data.value(forKey: "percent") as? Double {
-                        self.percent = percent
-                    }
-                    if let height = data.value(forKey: "height") as? Double {
-                        Wave.height -= height
-                    }
-                }
-            } catch {
-                print("Failed")
-            }
-        updateWaterDisplay()
         
         DropLet.layer.cornerRadius = 20
         DropLet.layer.shadowRadius = 20
         
+        resetPercentIfNecessary()
+        updateWaterDisplay()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.Wave.animationStart(direction: .right, speed: 10)
         }
-        let calendar = Calendar(identifier: .gregorian)
-            var components = DateComponents()
-            components.calendar = calendar
-            components.hour = 0
-            components.minute = 0
-            let midnight = calendar.nextDate(after: Date(), matching: components, matchingPolicy: .nextTime)!
-            let timer = Timer(fireAt: midnight, interval: 0, target: self, selector: #selector(clearWater), userInfo: nil, repeats: true)
-            RunLoop.main.add(timer, forMode: .common)
     }
-    
-    func updateWaterDisplay() {
-        WaterDisplay.text = "\(Int(percent.rounded()))%"
-    }
-    
     
     @IBAction func showAddWaterMenu(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -66,44 +40,62 @@ class ViewController: UIViewController, MenuControllerDelegate {
         present(menu, animated: true, completion: nil)
         
     }
-    func changeInf(_ number1: Double, number2: Double) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Water", in: context)!
-        let water = NSManagedObject(entity: entity, insertInto: context)
-        
-        water.setValue(number2, forKey: "height")
-        
-        self.percent += number1
-        
-        water.setValue(self.percent, forKey: "percent")
-        
-        do {
-            try context.save()
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        
-        self.Wave.height -= number2
-        
+    
+    func changeInf(_ value: Double) {
+       let p = getPercent() + value
+        setPercent(count: p)
         updateWaterDisplay()
     }
-    @objc func clearWater() {
-         percent = 0
-         Wave.height = 850
-         updateWaterDisplay()
-         
-         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
-         request.returnsObjectsAsFaults = false
-         do {
-             let result = try context.fetch(request)
-             for data in result as! [NSManagedObject] {
-                 context.delete(data)
-             }
-             try context.save()
-         } catch {
-             print("Failed to clear water")
-         }
-     }
+    
+    func updateWaterDisplay() {
+        let p = getPercent()
+        WaterDisplay.text = "\(Int(p.rounded()))%"
+        Wave.height = waterLevel(for: p)
+    }
+    
+    func waterLevel(for percent: Double) -> Double {850 - (percent * 8)}
+    
+    func getPercent () -> Double {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
+        do {
+            let result = try context.fetch(request) as! [NSManagedObject]
+            if result.isEmpty {
+                return 0.0
+            } else {
+                return result[0].value(forKey: "percent") as! Double
+            }
+        } catch {
+            print("Error fetching count: \(error)")
+            return 0.0
+        }
+    }
+    
+
+    func setPercent (count: Double) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
+        do {
+            let result = try context.fetch(request) as! [NSManagedObject]
+            var newCount: NSManagedObject
+            if result.isEmpty {
+                newCount = NSEntityDescription.insertNewObject(forEntityName: "Water", into: context)
+            } else {
+                newCount = result[0]
+            }
+            let limitedCount = min(count, 100.0)
+            newCount.setValue(limitedCount, forKey: "percent")
+            try context.save()
+        } catch {
+            print("Error saving count: \(error)")
+        }
+    }
+    
+    func resetPercentIfNecessary() {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: currentDate)
+        if components.hour == 0 && components.minute == 0 {
+            setPercent(count: 0)
+        }
+    }
     
 }

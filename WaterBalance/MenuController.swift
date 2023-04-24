@@ -32,9 +32,9 @@ class MenuController: UIViewController {
     }
     
     @IBAction func addWater(_ sender: Any) {
-        if selectedSegment == "100ml" {delegate?.changeInf(5.0, number2: 40)}
-        if selectedSegment == "250ml" {delegate?.changeInf(12.5, number2: 100)}
-        if selectedSegment == "500ml" {delegate?.changeInf(25.0, number2: 200)}
+        if selectedSegment == "100ml" {delegate?.changeInf(5.0)}
+        if selectedSegment == "250ml" {delegate?.changeInf(12.5)}
+        if selectedSegment == "500ml" {delegate?.changeInf(25.0)}
         else {dismiss(animated: true, completion: nil)}
         dismiss(animated: true, completion: nil)
     }
@@ -45,5 +45,5 @@ class MenuController: UIViewController {
 }
 
 protocol MenuControllerDelegate: AnyObject {
-    func changeInf(_ number1: Double, number2: Double)
+    func changeInf(_ value: Double)
 }
