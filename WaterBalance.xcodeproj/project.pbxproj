@@ -10,11 +10,12 @@
 		3320405629F2A9B9005F4DB5 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3320405529F2A9B9005F4DB5 /* MenuController.swift */; };
 		3321E75D29EB0F61002AE918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321E75C29EB0F61002AE918 /* AppDelegate.swift */; };
 		3321E75F29EB0F61002AE918 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321E75E29EB0F61002AE918 /* SceneDelegate.swift */; };
-		3321E76129EB0F61002AE918 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321E76029EB0F61002AE918 /* ViewController.swift */; };
+		3321E76129EB0F61002AE918 /* WaterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321E76029EB0F61002AE918 /* WaterController.swift */; };
 		3321E76429EB0F61002AE918 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76229EB0F61002AE918 /* Main.storyboard */; };
 		3321E76729EB0F61002AE918 /* WaterBalance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3321E76529EB0F61002AE918 /* WaterBalance.xcdatamodeld */; };
 		3321E76929EB0F63002AE918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76829EB0F63002AE918 /* Assets.xcassets */; };
 		3321E76C29EB0F63002AE918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76A29EB0F63002AE918 /* LaunchScreen.storyboard */; };
+		339B59E829F7D37200D9BB7B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B59E729F7D37200D9BB7B /* NotificationController.swift */; };
 		33D8FF2929EEB09400D4DCD3 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D8FF2829EEB09400D4DCD3 /* WaveView.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,12 +24,13 @@
 		3321E75929EB0F61002AE918 /* WaterBalance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterBalance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3321E75C29EB0F61002AE918 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3321E75E29EB0F61002AE918 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3321E76029EB0F61002AE918 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3321E76029EB0F61002AE918 /* WaterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterController.swift; sourceTree = "<group>"; };
 		3321E76329EB0F61002AE918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3321E76629EB0F61002AE918 /* WaterBalance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WaterBalance.xcdatamodel; sourceTree = "<group>"; };
 		3321E76829EB0F63002AE918 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3321E76B29EB0F63002AE918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3321E76D29EB0F63002AE918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		339B59E729F7D37200D9BB7B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		33D8FF2829EEB09400D4DCD3 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +66,8 @@
 			children = (
 				3321E75C29EB0F61002AE918 /* AppDelegate.swift */,
 				3321E75E29EB0F61002AE918 /* SceneDelegate.swift */,
-				3321E76029EB0F61002AE918 /* ViewController.swift */,
+				339B59E729F7D37200D9BB7B /* NotificationController.swift */,
+				3321E76029EB0F61002AE918 /* WaterController.swift */,
 				3320405529F2A9B9005F4DB5 /* MenuController.swift */,
 				3321E76229EB0F61002AE918 /* Main.storyboard */,
 				3321E76829EB0F63002AE918 /* Assets.xcassets */,
@@ -147,9 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3321E76129EB0F61002AE918 /* ViewController.swift in Sources */,
+				3321E76129EB0F61002AE918 /* WaterController.swift in Sources */,
 				33D8FF2929EEB09400D4DCD3 /* WaveView.swift in Sources */,
 				3321E75D29EB0F61002AE918 /* AppDelegate.swift in Sources */,
+				339B59E829F7D37200D9BB7B /* NotificationController.swift in Sources */,
 				3321E76729EB0F61002AE918 /* WaterBalance.xcdatamodeld in Sources */,
 				3320405629F2A9B9005F4DB5 /* MenuController.swift in Sources */,
 				3321E75F29EB0F61002AE918 /* SceneDelegate.swift in Sources */,

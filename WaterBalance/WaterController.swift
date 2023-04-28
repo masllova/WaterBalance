@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WaterController.swift
 //  WaterBalance
 //
 //  Created by Александра Маслова on 15.04.2023.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, MenuControllerDelegate {
+class WaterController: UIViewController, MenuControllerDelegate {
     var percent: Double = 0{
         didSet {if percent > 100 {percent = 100}}
     }
@@ -21,7 +21,9 @@ class ViewController: UIViewController, MenuControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationController().requestNotificationAuthorization()
+       // NotificationController().scheduleNotification()
+
         DropLet.layer.cornerRadius = 20
         DropLet.layer.shadowRadius = 20
         
