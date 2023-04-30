@@ -19,7 +19,7 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBOutlet weak var FrequencyOfTime: UITextField!
     let frequencyPicker = UIPickerView()
-    let frequencyOptions = [" ", "1", "2", "3"]
+    let frequencyOptions = ["1", "2", "3"]
     
     let userDefaults = UserDefaults.standard
     
@@ -67,12 +67,19 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         getDataFromPicker()
         view.endEditing(true)
         
-        userDefaults.set(StartTime.text, forKey: "start_time")
-                userDefaults.set(FinishTime.text, forKey: "finish_time")
-                userDefaults.set(FrequencyOfTime.text, forKey: "frequency")
-        scheduleNotification()
+        guard let startHour = Int((StartTime.text ?? "").prefix(2)),
+                  let startMinute = Int((StartTime.text ?? "").suffix(2)),
+                  let endHour = Int((FinishTime.text ?? "").prefix(2)),
+                  let endMinute = Int((FinishTime.text ?? "").suffix(2)),
+                  let frequencyInHours = Int(FrequencyOfTime.text ?? "") else {
+            print("oops")
+                      return
+                  }
+
+        
+        scheduleNotification(startHour: startHour, startMinute: startMinute, endHour: endHour, endMinute: endMinute, frequencyInHours: frequencyInHours)
     }
-    
+
     func getDataFromPicker() {
         let formater = DateFormatter()
         formater.dateFormat = "HH:mm"
@@ -80,7 +87,7 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
        
         FinishTime.text = formater.string(from: finishPicker.date)
         
-        // мин значение для finishPicker
+        // min value for finishPicker
         if let startDate = StartTime.text {
             formater.dateFormat = "HH:mm"
             let date = formater.date(from: startDate)
@@ -94,26 +101,49 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {return frequencyOptions[row]}
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {FrequencyOfTime.text = frequencyOptions[row]}
     
-    func scheduleNotification() {
+
+
+    func scheduleNotification(startHour: Int, startMinute: Int, endHour: Int, endMinute: Int, frequencyInHours: Int) {
         let content = UNMutableNotificationContent()
         content.title = "WaterBalance"
         content.body = "It's time to drink water 💧"
-        content.sound = .default
 
-        let startTimeComponents = Calendar.current.dateComponents([.hour, .minute], from: startPicker.date)
-        let finishTimeComponents = Calendar.current.dateComponents([.hour, .minute], from: finishPicker.date)
+        var dateComponents = DateComponents()
+        dateComponents.hour = startHour
+        dateComponents.minute = startMinute
 
-        let frequency = Double(FrequencyOfTime.text ?? "1") ?? 1.0
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: frequency * 60 * 60, repeats: true)
-        let identifier = "MyAppNotification"
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        var trigger: UNCalendarNotificationTrigger?
 
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error while scheduling notification: \(error.localizedDescription)")
+        var requests = [UNNotificationRequest]() // Создаем массив запросов
+        
+        let frequencyInMinutes = frequencyInHours * 60 // Переводим период в минуты
+
+        while dateComponents.hour! < endHour || (dateComponents.hour! == endHour && dateComponents.minute! < endMinute) {
+            trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            let request = UNNotificationRequest(identifier: "WaterBalanceNotification\(dateComponents.hour!)\(dateComponents.minute!)", content: content, trigger: trigger)
+            requests.append(request) // Добавляем запрос в массив
+
+            dateComponents.minute! += frequencyInMinutes
+
+            // Проверяем, не вышли ли мы за пределы 60 минут в часе
+            if dateComponents.minute! >= 60 {
+                dateComponents.hour! += 1
+                dateComponents.minute! -= 60
+            }
+        }
+        for r in requests {
+            UNUserNotificationCenter.current().add(r) { error in // Добавляем все запросы одновременно
+                if let error = error {
+                    print("Error scheduling notification: \(error.localizedDescription)")
+                } else {
+                    let date = "\(dateComponents.hour!):\(dateComponents.minute!)"
+                    print("Notification scheduled successfully for time: \(date)")
+                }
             }
         }
     }
+
+
     
     func requestNotificationAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in

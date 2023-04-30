@@ -22,12 +22,10 @@ class WaterController: UIViewController, MenuControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationController().requestNotificationAuthorization()
-       // NotificationController().scheduleNotification()
-
         DropLet.layer.cornerRadius = 20
         DropLet.layer.shadowRadius = 20
         
-        resetPercentIfNecessary()
+        resetPercentIfNeeded()
         updateWaterDisplay()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -46,6 +44,7 @@ class WaterController: UIViewController, MenuControllerDelegate {
     func changeInf(_ value: Double) {
        let p = getPercent() + value
         setPercent(count: p)
+        resetPercentIfNeeded()
         updateWaterDisplay()
     }
     
@@ -73,7 +72,7 @@ class WaterController: UIViewController, MenuControllerDelegate {
     }
     
 
-    func setPercent (count: Double) {
+    func setPercent(count: Double) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
         do {
             let result = try context.fetch(request) as! [NSManagedObject]
@@ -83,20 +82,41 @@ class WaterController: UIViewController, MenuControllerDelegate {
             } else {
                 newCount = result[0]
             }
-            let limitedCount = min(count, 100.0)
+            
+            let limitedCount = max(min(count, 100.0), 0.0)
             newCount.setValue(limitedCount, forKey: "percent")
+            
+            let currentDate = Date()
+            newCount.setValue(currentDate, forKey: "timestamp")
+            
             try context.save()
+            
         } catch {
             print("Error saving count: \(error)")
         }
     }
+
     
-    func resetPercentIfNecessary() {
-        let currentDate = Date()
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.hour, .minute], from: currentDate)
-        if components.hour == 0 && components.minute == 0 {
-            setPercent(count: 0)
+    func resetPercentIfNeeded() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
+        do {
+            let result = try context.fetch(request) as! [NSManagedObject]
+            if let lastEntry = result.last {
+                if let lastEntryTimestamp = lastEntry.value(forKey: "timestamp") as? Date {
+                    let calendar = Calendar.current
+                    let now = Date()
+                    let startOfToday = calendar.startOfDay(for: now)
+                    if lastEntryTimestamp < startOfToday {
+                        setPercent(count: 0)
+                    }
+                } else {
+                    setPercent(count: 0)
+                }
+            } else {
+                setPercent(count: 0)
+            }
+        } catch {
+            print("Error checking timestamp: \(error)")
         }
     }
     

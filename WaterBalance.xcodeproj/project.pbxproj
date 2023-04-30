@@ -16,6 +16,7 @@
 		3321E76929EB0F63002AE918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76829EB0F63002AE918 /* Assets.xcassets */; };
 		3321E76C29EB0F63002AE918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76A29EB0F63002AE918 /* LaunchScreen.storyboard */; };
 		339B59E829F7D37200D9BB7B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B59E729F7D37200D9BB7B /* NotificationController.swift */; };
+		33B1DC0E29FC3A7000A2D024 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B1DC0D29FC3A7000A2D024 /* UserNotifications.framework */; };
 		33D8FF2929EEB09400D4DCD3 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D8FF2829EEB09400D4DCD3 /* WaveView.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		3321E76B29EB0F63002AE918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3321E76D29EB0F63002AE918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		339B59E729F7D37200D9BB7B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		33B1DC0D29FC3A7000A2D024 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		33D8FF2829EEB09400D4DCD3 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33B1DC0E29FC3A7000A2D024 /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +53,7 @@
 			children = (
 				3321E75B29EB0F61002AE918 /* WaterBalance */,
 				3321E75A29EB0F61002AE918 /* Products */,
+				33B1DC0C29FC3A7000A2D024 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +81,14 @@
 				3321E76529EB0F61002AE918 /* WaterBalance.xcdatamodeld */,
 			);
 			path = WaterBalance;
+			sourceTree = "<group>";
+		};
+		33B1DC0C29FC3A7000A2D024 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33B1DC0D29FC3A7000A2D024 /* UserNotifications.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
