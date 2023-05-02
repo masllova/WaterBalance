@@ -18,14 +18,21 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     let finishPicker = UIDatePicker()
     
     @IBOutlet weak var FrequencyOfTime: UITextField!
+    
     let frequencyPicker = UIPickerView()
     let frequencyOptions = ["1", "2", "3"]
+    
+    @IBOutlet weak var Stack: UIStackView!
+    @IBOutlet weak var TopStack: UIStackView!
+    @IBOutlet weak var BottomStack: UIStackView!
     
     let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestNotificationAuthorization()
+        Stack.layer.cornerRadius = 15
+        TopStack.layer.cornerRadius = 15
+        BottomStack.layer.cornerRadius = 15
         
         FrequencyOfTime.text = "1"
 
@@ -114,25 +121,24 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
         var trigger: UNCalendarNotificationTrigger?
 
-        var requests = [UNNotificationRequest]() // Создаем массив запросов
-        
-        let frequencyInMinutes = frequencyInHours * 60 // Переводим период в минуты
+        var requests = [UNNotificationRequest]() // Creating an array of requests
+        let frequencyInMinutes = frequencyInHours * 60
 
         while dateComponents.hour! < endHour || (dateComponents.hour! == endHour && dateComponents.minute! < endMinute) {
             trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
             let request = UNNotificationRequest(identifier: "WaterBalanceNotification\(dateComponents.hour!)\(dateComponents.minute!)", content: content, trigger: trigger)
-            requests.append(request) // Добавляем запрос в массив
+            requests.append(request) // Adding a query to the array
 
             dateComponents.minute! += frequencyInMinutes
 
-            // Проверяем, не вышли ли мы за пределы 60 минут в часе
+            // We are checking if we have gone beyond 60 minutes in an hour
             if dateComponents.minute! >= 60 {
                 dateComponents.hour! += 1
                 dateComponents.minute! -= 60
             }
         }
         for r in requests {
-            UNUserNotificationCenter.current().add(r) { error in // Добавляем все запросы одновременно
+            UNUserNotificationCenter.current().add(r) { error in // Adding all requests at the same time
                 if let error = error {
                     print("Error scheduling notification: \(error.localizedDescription)")
                 } else {

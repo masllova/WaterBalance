@@ -9,10 +9,6 @@ import UIKit
 import CoreData
 
 class WaterController: UIViewController, MenuControllerDelegate {
-    var percent: Double = 0{
-        didSet {if percent > 100 {percent = 100}}
-    }
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var Wave: WaveView!
@@ -34,11 +30,14 @@ class WaterController: UIViewController, MenuControllerDelegate {
     }
     
     @IBAction func showAddWaterMenu(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let menu = storyboard.instantiateViewController(withIdentifier: "menu") as? MenuController else { return }
-        menu.delegate = self
-        present(menu, animated: true, completion: nil)
-        
+        if WaterDisplay.text == "100%" {alert()}
+        else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let menu = storyboard.instantiateViewController(withIdentifier: "menu") as? MenuController else { return }
+            menu.delegate = self
+            present(menu, animated: true, completion: nil)
+
+        }
     }
     
     func changeInf(_ value: Double) {
@@ -56,46 +55,35 @@ class WaterController: UIViewController, MenuControllerDelegate {
     
     func waterLevel(for percent: Double) -> Double {850 - (percent * 8)}
     
-    func getPercent () -> Double {
+    func getPercent() -> Double {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+        request.fetchLimit = 1
         do {
             let result = try context.fetch(request) as! [NSManagedObject]
-            if result.isEmpty {
-                return 0.0
+            if let lastEntry = result.last, let percent = lastEntry.value(forKey: "percent") as? Double {
+                return percent
             } else {
-                return result[0].value(forKey: "percent") as! Double
+                return 0.0
             }
         } catch {
             print("Error fetching count: \(error)")
             return 0.0
         }
     }
-    
 
     func setPercent(count: Double) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
+        let newCount = NSEntityDescription.insertNewObject(forEntityName: "Water", into: context)
+        let limitedCount = max(min(count, 100.0), 0.0)
+        newCount.setValue(limitedCount, forKey: "percent")
+        let currentDate = Date()
+        newCount.setValue(currentDate, forKey: "timestamp")
         do {
-            let result = try context.fetch(request) as! [NSManagedObject]
-            var newCount: NSManagedObject
-            if result.isEmpty {
-                newCount = NSEntityDescription.insertNewObject(forEntityName: "Water", into: context)
-            } else {
-                newCount = result[0]
-            }
-            
-            let limitedCount = max(min(count, 100.0), 0.0)
-            newCount.setValue(limitedCount, forKey: "percent")
-            
-            let currentDate = Date()
-            newCount.setValue(currentDate, forKey: "timestamp")
-            
             try context.save()
-            
         } catch {
             print("Error saving count: \(error)")
         }
     }
-
     
     func resetPercentIfNeeded() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Water")
@@ -109,15 +97,19 @@ class WaterController: UIViewController, MenuControllerDelegate {
                     if lastEntryTimestamp < startOfToday {
                         setPercent(count: 0)
                     }
-                } else {
-                    setPercent(count: 0)
-                }
-            } else {
-                setPercent(count: 0)
-            }
+                } else {setPercent(count: 0)}
+            } else {setPercent(count: 0)}
         } catch {
             print("Error checking timestamp: \(error)")
         }
     }
     
+    func alert() {
+        let alertController = UIAlertController(title: "Great job!", message: "Your goal for today is fulfilled", preferredStyle: .alert)
+        let action = UIAlertAction(title: "ok", style: .default) { _ in
+            print("ok")
+        }
+        alertController.addAction(action)
+        present(alertController, animated: true) {print("alert")}
+    }
 }

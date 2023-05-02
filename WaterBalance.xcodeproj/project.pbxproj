@@ -15,6 +15,7 @@
 		3321E76729EB0F61002AE918 /* WaterBalance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3321E76529EB0F61002AE918 /* WaterBalance.xcdatamodeld */; };
 		3321E76929EB0F63002AE918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76829EB0F63002AE918 /* Assets.xcassets */; };
 		3321E76C29EB0F63002AE918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3321E76A29EB0F63002AE918 /* LaunchScreen.storyboard */; };
+		332256342A0000D200FAE4CE /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332256332A0000D200FAE4CE /* CalendarController.swift */; };
 		339B59E829F7D37200D9BB7B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339B59E729F7D37200D9BB7B /* NotificationController.swift */; };
 		33B1DC0E29FC3A7000A2D024 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B1DC0D29FC3A7000A2D024 /* UserNotifications.framework */; };
 		33D8FF2929EEB09400D4DCD3 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D8FF2829EEB09400D4DCD3 /* WaveView.swift */; };
@@ -31,6 +32,7 @@
 		3321E76829EB0F63002AE918 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3321E76B29EB0F63002AE918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3321E76D29EB0F63002AE918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		332256332A0000D200FAE4CE /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		339B59E729F7D37200D9BB7B /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		33B1DC0D29FC3A7000A2D024 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		33D8FF2829EEB09400D4DCD3 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
@@ -70,17 +72,34 @@
 			children = (
 				3321E75C29EB0F61002AE918 /* AppDelegate.swift */,
 				3321E75E29EB0F61002AE918 /* SceneDelegate.swift */,
-				339B59E729F7D37200D9BB7B /* NotificationController.swift */,
-				3321E76029EB0F61002AE918 /* WaterController.swift */,
-				3320405529F2A9B9005F4DB5 /* MenuController.swift */,
+				332256352A00FC1200FAE4CE /* Controllers */,
+				332256362A00FC3900FAE4CE /* View */,
 				3321E76229EB0F61002AE918 /* Main.storyboard */,
-				3321E76829EB0F63002AE918 /* Assets.xcassets */,
 				3321E76A29EB0F63002AE918 /* LaunchScreen.storyboard */,
 				3321E76D29EB0F63002AE918 /* Info.plist */,
-				33D8FF2829EEB09400D4DCD3 /* WaveView.swift */,
 				3321E76529EB0F61002AE918 /* WaterBalance.xcdatamodeld */,
 			);
 			path = WaterBalance;
+			sourceTree = "<group>";
+		};
+		332256352A00FC1200FAE4CE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				339B59E729F7D37200D9BB7B /* NotificationController.swift */,
+				332256332A0000D200FAE4CE /* CalendarController.swift */,
+				3321E76029EB0F61002AE918 /* WaterController.swift */,
+				3320405529F2A9B9005F4DB5 /* MenuController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		332256362A00FC3900FAE4CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3321E76829EB0F63002AE918 /* Assets.xcassets */,
+				33D8FF2829EEB09400D4DCD3 /* WaveView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		33B1DC0C29FC3A7000A2D024 /* Frameworks */ = {
@@ -163,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3321E76129EB0F61002AE918 /* WaterController.swift in Sources */,
+				332256342A0000D200FAE4CE /* CalendarController.swift in Sources */,
 				33D8FF2929EEB09400D4DCD3 /* WaveView.swift in Sources */,
 				3321E75D29EB0F61002AE918 /* AppDelegate.swift in Sources */,
 				339B59E829F7D37200D9BB7B /* NotificationController.swift in Sources */,
@@ -321,9 +341,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,9 +351,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Alexandra.WaterBalance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -350,9 +373,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,9 +383,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Alexandra.WaterBalance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
