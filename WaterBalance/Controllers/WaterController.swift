@@ -21,13 +21,17 @@ class WaterController: UIViewController, MenuControllerDelegate {
         DropLet.layer.cornerRadius = 20
         DropLet.layer.shadowRadius = 20
         
-        resetPercentIfNeeded()
-        updateWaterDisplay()
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.Wave.animationStart(direction: .right, speed: 10)
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            
+            resetPercentIfNeeded()
+            updateWaterDisplay()
+        }
     
     @IBAction func showAddWaterMenu(_ sender: Any) {
         if WaterDisplay.text == "100%" {alert()}

@@ -88,19 +88,24 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
 
     func getDataFromPicker() {
-        let formater = DateFormatter()
-        formater.dateFormat = "HH:mm"
-        StartTime.text = formater.string(from: startPicker.date)
-       
-        FinishTime.text = formater.string(from: finishPicker.date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
         
-        // min value for finishPicker
-        if let startDate = StartTime.text {
-            formater.dateFormat = "HH:mm"
-            let date = formater.date(from: startDate)
-            finishPicker.minimumDate = date
+        StartTime.text = formatter.string(from: startPicker.date)
+        FinishTime.text = formatter.string(from: finishPicker.date)
+        
+        if let startDate = formatter.date(from: StartTime.text ?? ""),
+           let finishDate = formatter.date(from: FinishTime.text ?? "") {
+            if startDate > finishDate {
+                FinishTime.text = formatter.string(from: startDate)
+                finishPicker.date = startDate
+            }
         }
+        
+        userDefaults.setValue(StartTime.text, forKey: "start_time")
+        userDefaults.setValue(FinishTime.text, forKey: "finish_time")
     }
+
 
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
@@ -123,6 +128,9 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
         var requests = [UNNotificationRequest]() // Creating an array of requests
         let frequencyInMinutes = frequencyInHours * 60
+        
+        // Removing all pending notifications with the same identifier
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["WaterBalanceNotification"])
 
         while dateComponents.hour! < endHour || (dateComponents.hour! == endHour && dateComponents.minute! < endMinute) {
             trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
@@ -147,6 +155,7 @@ class NotificationController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 }
             }
         }
+        
     }
 
 
